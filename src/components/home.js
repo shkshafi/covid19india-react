@@ -77,10 +77,10 @@ function Home(props) {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Coronavirus Outbreak in India - covid19india.org</title>
+        <title>Coronavirus Outbreak in Hyderabad - covid19india.org</title>
         <meta
           name="title"
-          content="Coronavirus Outbreak in India: Latest Map and Case Count"
+          content="Coronavirus Outbreak in Hyderabad: Latest Map and Case Count"
         />
       </Helmet>
 
