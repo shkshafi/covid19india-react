@@ -87,16 +87,19 @@ function Home(props) {
       <div className="Home">
         <div className="home-left">
           <div className="header">
-            <Suspense fallback={<div />}>
+            {/* <Suspense fallback={<div />}>
               <Search />
-            </Suspense>
-
+            </Suspense> */}
+            <h1
+        className="state-name" >Covid-19 Dashboard for Hyderabad</h1>
+        
             {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
+              
                 <Actions
                   {...{
                     setDate,
-                    dates: Object.keys(timeseries['TT']).reverse(),
+                    dates: Object.keys(timeseries['TG']).reverse(),
                     date,
                   }}
                 />
@@ -106,11 +109,11 @@ function Home(props) {
 
           {data && (
             <Suspense fallback={<div />}>
-              <Level data={data['TT']} />
+              <Level data={data['TG'].districts["Hyderabad"]} />
             </Suspense>
           )}
 
-          <Suspense fallback={<div />}>
+          {/* <Suspense fallback={<div />}>
             {timeseries && (
               <Minigraph timeseries={timeseries['TT']} {...{date}} />
             )}
@@ -120,7 +123,7 @@ function Home(props) {
             {data && (
               <Table {...{data, regionHighlighted, setRegionHighlighted}} />
             )}
-          </Suspense>
+          </Suspense> */}
         </div>
 
         <div className="home-right" ref={homeRightElement}>
@@ -129,7 +132,7 @@ function Home(props) {
               {data && (
                 <Suspense fallback={<div />}>
                   <MapExplorer
-                    stateCode="TT"
+                    stateCode="TG"
                     {...{data}}
                     {...{mapStatistic, setMapStatistic}}
                     {...{regionHighlighted, setRegionHighlighted}}
@@ -137,6 +140,12 @@ function Home(props) {
                   />
                 </Suspense>
               )}
+
+{/* <Suspense fallback={<div />}>
+            {timeseries && (
+              <Minigraph timeseries={timeseries['TG']} {...{date}} />
+            )}
+          </Suspense> */}
 
               {timeseries && (
                 <Suspense fallback={<div />}>

@@ -172,7 +172,7 @@ const ActionsPanel = ({
         )}
 
         {showUpdates && BellOff}
-        <animated.div
+        {/* <animated.div
           className="timeline-icon"
           onClick={() => {
             setIsTimelineMode(true);
@@ -181,7 +181,7 @@ const ActionsPanel = ({
           style={trail[2]}
         >
           {TimelineIcon}
-        </animated.div>
+        </animated.div> */}
       </animated.div>
 
       <animated.div
