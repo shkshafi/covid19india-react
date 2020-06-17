@@ -378,11 +378,11 @@ function MapExplorer({
             ` (${t(STATE_NAMES[regionHighlighted.stateCode])})`}
         </h2>
 
-        {currentMapMeta.mapType === MAP_TYPES.STATE && (
+        {/* {currentMapMeta.mapType === MAP_TYPES.STATE && (
           <div className="map-button" onClick={() => switchMap('TT')}>
             {t('Back')}
           </div>
-        )}
+        )} */}
 
         {currentMap.option !== MAP_OPTIONS.ZONES &&
           ((currentMap.view === MAP_VIEWS.DISTRICTS &&

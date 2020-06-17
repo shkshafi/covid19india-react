@@ -1,10 +1,14 @@
 import {MAP_META} from '../constants';
 import useStickySWR from '../hooks/usestickyswr';
-
+// import {useWindowSize} from 'react-use';
 import StateMeta from './statemeta';
-
 import React, {useMemo,useState, useRef, lazy, Suspense} from 'react';
-
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 import {useIsVisible} from 'react-is-visible';
 import useSWR from 'swr';
 
@@ -28,7 +32,6 @@ import {useTranslation} from 'react-i18next';
 import {useParams} from 'react-router-dom';
 import {useSpring, animated, config} from 'react-spring';
 import {useMeasure} from 'react-use';
-
 
 
 const TimeSeriesExplorer = lazy(() =>
@@ -115,7 +118,7 @@ function Home(props) {
   return (
     <React.Fragment>
       <Helmet>
-        <title>Coronavirus Outbreak in Hyderabad - covid19india.org</title>
+        <title>Coronavirus Outbreak in Hyderabad - https://covid19hyd.herokuapp.com/</title>
         <meta
           name="title"
           content="Coronavirus Outbreak in Hyderabad: Latest Map and Case Count"
@@ -128,7 +131,16 @@ function Home(props) {
             {/* <Suspense fallback={<div />}>
               <Search />
             </Suspense> */}
-            <h1>COVID-19</h1>
+
+            {/* {windowSize.width > 769 && (
+          <h1>COVID-19</h1>
+        )} */}
+
+<BrowserView>
+    <h1>COVID19</h1>
+</BrowserView>
+
+            
             <h1>Hyderabad - Dashboard</h1>
             {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
