@@ -1,10 +1,35 @@
 import {MAP_META} from '../constants';
 import useStickySWR from '../hooks/usestickyswr';
-import {fetcher} from '../utils/commonfunctions';
 
-import React, {useState, useRef, lazy, Suspense} from 'react';
-import {Helmet} from 'react-helmet';
+import StateMeta from './statemeta';
+
+import React, {useMemo,useState, useRef, lazy, Suspense} from 'react';
+
 import {useIsVisible} from 'react-is-visible';
+import useSWR from 'swr';
+
+import DeltaBarGraph from './deltabargraph';
+import StateDropdown from './statedropdown';
+
+
+import {PRIMARY_STATISTICS, COLORS} from '../constants';
+import {NUM_BARS_STATEPAGE, STATE_NAMES} from '../constants';
+import {
+  fetcher,
+  formatDate,
+  formatNumber,
+  getStatistic,
+} from '../utils/commonfunctions';
+
+
+import * as Icon from 'react-feather';
+import {Helmet} from 'react-helmet';
+import {useTranslation} from 'react-i18next';
+import {useParams} from 'react-router-dom';
+import {useSpring, animated, config} from 'react-spring';
+import {useMeasure} from 'react-use';
+
+
 
 const TimeSeriesExplorer = lazy(() =>
   import('./timeseriesexplorer' /* webpackChunkName: "TimeSeriesExplorer" */)
@@ -30,6 +55,7 @@ const Search = lazy(() => import('./search' /* webpackChunkName: "Search" */));
 
 const Level = lazy(() => import('./level' /* webpackChunkName: "Level" */));
 
+const stateCode = "TG" ;
 function Home(props) {
   const [regionHighlighted, setRegionHighlighted] = useState({
     stateCode: 'TT',
@@ -40,6 +66,16 @@ function Home(props) {
   const [mapStatistic, setMapStatistic] = useState('active');
 
   const [date, setDate] = useState('');
+
+  const {data1} = useStickySWR(
+    `https://api.covid19india.org/v3/min/data.min.json`,
+    fetcher,
+    {
+      revalidateOnMount: true,
+      refreshInterval: 100000,
+      revalidateOnFocus: false,
+    }
+  );
 
   const {data: timeseries} = useStickySWR(
     'https://api.covid19india.org/v3/min/timeseries.min.json',
@@ -74,6 +110,8 @@ function Home(props) {
     ].sort(),
   ];
 
+
+
   return (
     <React.Fragment>
       <Helmet>
@@ -90,9 +128,8 @@ function Home(props) {
             {/* <Suspense fallback={<div />}>
               <Search />
             </Suspense> */}
-            <h1
-        className="state-name" >Covid-19 Dashboard for Hyderabad</h1>
-        
+            <h1>COVID-19</h1>
+            <h1>Hyderabad - Dashboard</h1>
             {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
               
@@ -124,9 +161,33 @@ function Home(props) {
               <Table {...{data, regionHighlighted, setRegionHighlighted}} />
             )}
           </Suspense> */}
-        </div>
 
-        <div className="home-right" ref={homeRightElement}>
+
+
+{/* <Suspense fallback={<div />}>
+            {data && (
+              <Table {...{data, regionHighlighted, setRegionHighlighted}} />
+            )}
+          </Suspense> */}
+<br />
+<Suspense fallback={<div />}>
+            {data && (
+              <Table {...{data, regionHighlighted, setRegionHighlighted}} />
+            )}
+          </Suspense> 
+
+<Suspense fallback={<div />}>
+            {timeseries && (
+              <Minigraph timeseries={timeseries['TG']} {...{date}} />
+            )}
+          </Suspense>
+
+          <br />
+          <br />
+
+        {/* </div> */}
+        {/* className="home-right" */}
+        <div  ref={homeRightElement}>
           {isVisible && (
             <React.Fragment>
               {data && (
@@ -138,8 +199,14 @@ function Home(props) {
                     {...{regionHighlighted, setRegionHighlighted}}
                     {...{anchor, setAnchor}}
                   />
+                  
                 </Suspense>
+
+                
+                
               )}
+
+
 
 {/* <Suspense fallback={<div />}>
             {timeseries && (
@@ -161,11 +228,12 @@ function Home(props) {
           )}
         </div>
       </div>
-      {isVisible && (
+      </div>
+      {/* {isVisible && (
         <Suspense fallback={<div />}>
           <Footer />
         </Suspense>
-      )}
+      )} */}
     </React.Fragment>
   );
 }

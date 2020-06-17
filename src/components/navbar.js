@@ -80,7 +80,7 @@ function Navbar({
             setExpand(false);
           }}
         >
-          Covid19<span>India</span>
+          Covid19<span>Hyd</span>
         </Link>
       </div>
 

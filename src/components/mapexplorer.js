@@ -282,12 +282,13 @@ function MapExplorer({
       )}
 
       <div className="header">
-        <h1>
+        {/* <h1>
           {currentMap.code === 'TT'
             ? t('India')
             : t(STATE_NAMES[currentMap.code])}{' '}
           {t('Map')}
-        </h1>
+        </h1> */}
+        <h1>Telangana Status</h1>
         <h6>
           {t('{{action}} over a {{mapType}} for more details', {
             action: t(window.innerWidth <= 769 ? 'Tap' : 'Hover'),

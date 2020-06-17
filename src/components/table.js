@@ -164,7 +164,7 @@ function Table({data, regionHighlighted, setRegionHighlighted}) {
         {Object.keys(data)
           .filter(
             (stateCode) =>
-              stateCode !== 'TT' && data[stateCode].total?.confirmed
+              stateCode == 'TG' && data[stateCode].total?.confirmed
           )
           .sort((a, b) => sortingFunction(a, b))
           .slice(0, isVisible ? Object.keys(data).length - 1 : 10)
