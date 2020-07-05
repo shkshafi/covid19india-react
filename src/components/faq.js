@@ -38,7 +38,7 @@ function FAQ(props) {
         />
       </Helmet>
       {/* {faq.map((faq, index) => { */}
-        return (
+        
           <div
             // key={index}
             className="faq fadeInUp"
