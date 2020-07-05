@@ -61,10 +61,10 @@ function FAQ(props) {
 
 
           </div>
-        );
-      )}
+        {/* );
+      )} */}
     </div>
   );
-    }
+}
 
 export default FAQ;

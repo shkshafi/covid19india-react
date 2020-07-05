@@ -38,10 +38,10 @@ const LanguageSwitcher = lazy(() =>
 const schemaMarkup = {
   '@context': 'http://schema.org/',
   '@type': 'NGO',
-  name: 'Coronavirus Outbreak in India: Latest Map and Case Count',
+  name: 'Coronavirus Outbreak in Hyderabad: Latest Map and Case Count',
   alternateName: 'COVID-19 Tracker',
-  url: 'https://www.covid19india.org/',
-  image: 'https://www.covid19india.org/thumbnail.png',
+  url: '',
+  image: '',
 };
 
 function App() {

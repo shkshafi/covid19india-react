@@ -1690,6 +1690,15 @@ abbr {
   }
 }
 
+.lastp {
+  font-family: 'archia';
+  font-size: 12px;
+  align-items: center;
+  color: $green;
+  display: flex;
+  flex-direction: row;
+}
+
 .table {
   align-self: center;
   border-radius: 3px;

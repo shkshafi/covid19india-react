@@ -10,6 +10,13 @@ import {
   isMobile
 } from "react-device-detect";
 import {useIsVisible} from 'react-is-visible';
+import {
+  ClockIcon
+} from '@primer/octicons-v2-react';
+import {
+  capitalize,
+  formatLastUpdated
+} from '../utils/commonfunctions';
 import useSWR from 'swr';
 
 import DeltaBarGraph from './deltabargraph';
@@ -145,13 +152,32 @@ function Home(props) {
             {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
               
-                <Actions
+                {/* <Actions
+                
                   {...{
                     setDate,
                     dates: Object.keys(timeseries['TG']).reverse(),
                     date,
                   }}
-                />
+                /> */}
+                
+                <p className="lastp">
+                
+                {capitalize(
+                  ` Last updated ${formatLastUpdated(data['TG'].meta.last_updated)} ${'ago'}`
+                )}
+                </p>
+                
+
+              {/* {data?.meta?.['last_updated'] && (
+              <p className="last-updated">
+                <ClockIcon />
+                {capitalize(
+                  `${formatLastUpdated(data['TG'].meta.last_updated)} ${t('ago')}`
+                )}
+              </p>
+            )} */}
+
               </Suspense>
             )}
           </div>
