@@ -106,26 +106,26 @@ function Navbar({
                 <Icon.Home {...activeNavIcon('/')} />
               </Link>
             </span>
-            <span>
+            {/* <span>
               <Link to="/demographics">
                 <Icon.Users {...activeNavIcon('/demographics')} />
               </Link>
-            </span>
-            <span>
+            </span> */}
+            {/* <span>
               <Link to="/essentials">
                 <Icon.Package {...activeNavIcon('/essentials')} />
               </Link>
-            </span>
+            </span> */}
             <span>
               <Link to="/about">
                 <Icon.HelpCircle {...activeNavIcon('/about')} />
               </Link>
             </span>
-            <span>
+            {/* <span>
               <Link to="/blog">
                 <Icon.Book {...activeNavIcon('/about')} />
               </Link>
-            </span>
+            </span> */}
             <span>{windowSize.width > 768 && <SunMoon {...{darkMode}} />}</span>
           </React.Fragment>
         )}
@@ -180,7 +180,7 @@ function Expand({pages, setExpand, darkMode, windowSize}) {
       {windowSize.width < 768 && <SunMoon {...{darkMode}} />}
 
       <div className="expand-bottom">
-        <h5>{t('A crowdsourced initiative.')}</h5>
+        <h5>Sourced from <a href="http://www.covid19india.org" target="new">covid19india.org</a></h5>
       </div>
     </div>
   );
