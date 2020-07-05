@@ -136,8 +136,8 @@ function Table({data, regionHighlighted, setRegionHighlighted}) {
             className="cell heading"
             onClick={() => handleSortClick('stateName')}
           >
-            <div>{t('State/UT')}</div>
-            {sortData.sortColumn === 'stateName' && (
+            <div>Tap to see city wise details</div>
+            {/* {sortData.sortColumn === 'stateName' && (
               <div
                 className={classnames('sort-icon', {
                   invert: !sortData.isAscending,
@@ -145,7 +145,7 @@ function Table({data, regionHighlighted, setRegionHighlighted}) {
               >
                 <FilterIcon size={10} />
               </div>
-            )}
+            )} */}
           </div>
 
           {PRIMARY_STATISTICS.map((statistic) => (
