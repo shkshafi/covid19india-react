@@ -55,30 +55,30 @@ function App() {
       displayName: 'Home',
       showInNavbar: true,
     },
-    {
-      pageLink: '/demographics',
-      view: Demographics,
-      displayName: 'Demographics',
-      showInNavbar: true,
-    },
-    {
-      pageLink: '/essentials',
-      view: Essentials,
-      displayName: 'Essentials',
-      showInNavbar: true,
-    },
+    // {
+    //   pageLink: '/demographics',
+    //   view: Demographics,
+    //   displayName: 'Demographics',
+    //   showInNavbar: true,
+    // },
+    // {
+    //   pageLink: '/essentials',
+    //   view: Essentials,
+    //   displayName: 'Essentials',
+    //   showInNavbar: true,
+    // },
     {
       pageLink: '/about',
       view: FAQ,
       displayName: 'About',
       showInNavbar: true,
     },
-    {
-      pageLink: '/blog',
-      view: Blog,
-      displayName: 'Blog',
-      showInNavbar: true,
-    },
+    // {
+    //   pageLink: '/blog',
+    //   view: Blog,
+    //   displayName: 'Blog',
+    //   showInNavbar: true,
+    // },
     {
       pageLink: '/state/:stateCode',
       view: State,

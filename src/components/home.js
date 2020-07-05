@@ -137,11 +137,11 @@ function Home(props) {
         )} */}
 
 <BrowserView>
-    <h1>COVID19</h1>
+    <h1>COVID-19</h1>
 </BrowserView>
 
             
-            <h1>Hyderabad - Dashboard</h1>
+            <h1>Hyderabad</h1>
             {timeseries && (
               <Suspense fallback={<div style={{minHeight: '56px'}} />}>
               
